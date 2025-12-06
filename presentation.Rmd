@@ -1,0 +1,53 @@
+---
+title: "Next Word Prediction App"
+author: "Deekshith N"
+date: "2025-12-06"
+output: ioslides_presentation
+---
+
+## Slide 1: Overview
+**The Goal:** Build a predictive text model similar to SwiftKey.
+
+**The App:** 
+- Takes user text input.
+- Analyzes the structure of the sentence.
+- Predicts the most likely next word.
+- **Hosted on:** [Link to your Shiny App]
+
+## Slide 2: How it Works (The Algorithm)
+We utilized a **Backoff N-Gram Model**:
+
+1. **Data Cleaning:** Lowercased, removed punctuation, tokenized.
+2. **N-Grams:** Built tables of Quadgrams (4 words), Trigrams (3 words), and Bigrams (2 words).
+3. **Stupid Backoff:** 
+   - First looks for a 4-gram match.
+   - If not found, "backs off" to a 3-gram.
+   - Then to a 2-gram.
+   - Defaults to high-frequency unigrams if all else fails.
+
+## Slide 3: Model Performance
+**Optimization for Speed & Size:**
+- The full dataset was over 500MB.
+- We sampled 2% of the data to ensure the app loads in <5 seconds.
+- We pruned low-frequency N-grams (n=1) to reduce memory usage.
+
+**Accuracy:**
+- The model successfully predicts common phrases (e.g., "New York" -> "City").
+
+## Slide 4: Using the Application
+**Instructions:**
+1. Wait for the app to load (indicated by "Ready").
+2. Type a partial sentence into the text box (e.g., "I want to go").
+3. Click **Submit**.
+4. View the predicted word on the right panel.
+
+**Experience:** Simple, clean interface designed for mobile and desktop use.
+
+## Slide 5: Conclusion & Future Work
+**Why hire me?**
+- This project demonstrates full-stack data science: Data Engineering, NLP, Model Optimization, and Product Deployment.
+
+**Future Improvements:**
+- Add sentiment analysis.
+- Increase dictionary size.
+- Implement more complex smoothing (Kneser-Ney).
